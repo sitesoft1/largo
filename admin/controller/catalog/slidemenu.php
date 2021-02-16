@@ -3,24 +3,24 @@ class ControllerCatalogSlidemenu extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('catalog/category');
+		$this->load->language('catalog/slidemenu');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('catalog/category');
+		$this->load->model('catalog/slidemenu');
 
 		$this->getList();
 	}
 
 	public function add() {
-		$this->load->language('catalog/category');
+		$this->load->language('catalog/slidemenu');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('catalog/category');
+		$this->load->model('catalog/slidemenu');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_catalog_category->addCategory($this->request->post);
+			$this->model_catalog_slidemenu->addCategory($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -38,21 +38,21 @@ class ControllerCatalogSlidemenu extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
 		$this->getForm();
 	}
 
 	public function edit() {
-		$this->load->language('catalog/category');
+		$this->load->language('catalog/slidemenu');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('catalog/category');
+		$this->load->model('catalog/slidemenu');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_catalog_category->editCategory($this->request->get['category_id'], $this->request->post);
+			$this->model_catalog_slidemenu->editCategory($this->request->get['slidemenu_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -70,22 +70,22 @@ class ControllerCatalogSlidemenu extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
 		$this->getForm();
 	}
 
 	public function delete() {
-		$this->load->language('catalog/category');
+		$this->load->language('catalog/slidemenu');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('catalog/category');
+		$this->load->model('catalog/slidemenu');
 
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
-			foreach ($this->request->post['selected'] as $category_id) {
-				$this->model_catalog_category->deleteCategory($category_id);
+			foreach ($this->request->post['selected'] as $slidemenu_id) {
+				$this->model_catalog_slidemenu->deleteCategory($slidemenu_id);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -104,21 +104,21 @@ class ControllerCatalogSlidemenu extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
 		$this->getList();
 	}
 
 	public function repair() {
-		$this->load->language('catalog/category');
+		$this->load->language('catalog/slidemenu');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('catalog/category');
+		$this->load->model('catalog/slidemenu');
 
 		if ($this->validateRepair()) {
-			$this->model_catalog_category->repairCategories();
+			$this->model_catalog_slidemenu->repairCategories();
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -136,7 +136,7 @@ class ControllerCatalogSlidemenu extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
 		$this->getList();
@@ -184,12 +184,12 @@ class ControllerCatalogSlidemenu extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url, true)
+			'href' => $this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'] . $url, true)
 		);
 
-		$data['add'] = $this->url->link('catalog/category/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
-		$data['delete'] = $this->url->link('catalog/category/delete', 'user_token=' . $this->session->data['user_token'] . $url, true);
-		$data['repair'] = $this->url->link('catalog/category/repair', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['add'] = $this->url->link('catalog/slidemenu/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['delete'] = $this->url->link('catalog/slidemenu/delete', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['repair'] = $this->url->link('catalog/slidemenu/repair', 'user_token=' . $this->session->data['user_token'] . $url, true);
 
 		$data['categories'] = array();
 
@@ -200,17 +200,17 @@ class ControllerCatalogSlidemenu extends Controller {
 			'limit' => $this->config->get('config_limit_admin')
 		);
 
-		$category_total = $this->model_catalog_category->getTotalCategories();
+		$category_total = $this->model_catalog_slidemenu->getTotalCategories();
 
-		$results = $this->model_catalog_category->getCategories($filter_data);
+		$results = $this->model_catalog_slidemenu->getCategories($filter_data);
 
 		foreach ($results as $result) {
 			$data['categories'][] = array(
-				'category_id' => $result['category_id'],
+				'slidemenu_id' => $result['slidemenu_id'],
 				'name'        => $result['name'],
 				'sort_order'  => $result['sort_order'],
-				'edit'        => $this->url->link('catalog/category/edit', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url, true),
-				'delete'      => $this->url->link('catalog/category/delete', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $result['category_id'] . $url, true)
+				'edit'        => $this->url->link('catalog/slidemenu/edit', 'user_token=' . $this->session->data['user_token'] . '&slidemenu_id=' . $result['slidemenu_id'] . $url, true),
+				'delete'      => $this->url->link('catalog/slidemenu/delete', 'user_token=' . $this->session->data['user_token'] . '&slidemenu_id=' . $result['slidemenu_id'] . $url, true)
 			);
 		}
 
@@ -246,8 +246,8 @@ class ControllerCatalogSlidemenu extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_name'] = $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url, true);
-		$data['sort_sort_order'] = $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . '&sort=sort_order' . $url, true);
+		$data['sort_name'] = $this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'] . '&sort=name' . $url, true);
+		$data['sort_sort_order'] = $this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'] . '&sort=sort_order' . $url, true);
 
 		$url = '';
 
@@ -263,7 +263,7 @@ class ControllerCatalogSlidemenu extends Controller {
 		$pagination->total = $category_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_limit_admin');
-		$pagination->url = $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}', true);
+		$pagination->url = $this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}', true);
 
 		$data['pagination'] = $pagination->render();
 
@@ -276,11 +276,11 @@ class ControllerCatalogSlidemenu extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/category_list', $data));
+		$this->response->setOutput($this->load->view('catalog/slidemenu_list', $data));
 	}
 
 	protected function getForm() {
-		$data['text_form'] = !isset($this->request->get['category_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
+		$data['text_form'] = !isset($this->request->get['slidemenu_id']) ? $this->language->get('text_add') : $this->language->get('text_edit');
 
 		if (isset($this->error['warning'])) {
 			$data['error_warning'] = $this->error['warning'];
@@ -335,19 +335,19 @@ class ControllerCatalogSlidemenu extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url, true)
+			'href' => $this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'] . $url, true)
 		);
 
-		if (!isset($this->request->get['category_id'])) {
-			$data['action'] = $this->url->link('catalog/category/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		if (!isset($this->request->get['slidemenu_id'])) {
+			$data['action'] = $this->url->link('catalog/slidemenu/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
 		} else {
-			$data['action'] = $this->url->link('catalog/category/edit', 'user_token=' . $this->session->data['user_token'] . '&category_id=' . $this->request->get['category_id'] . $url, true);
+			$data['action'] = $this->url->link('catalog/slidemenu/edit', 'user_token=' . $this->session->data['user_token'] . '&slidemenu_id=' . $this->request->get['slidemenu_id'] . $url, true);
 		}
 
-		$data['cancel'] = $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['cancel'] = $this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'] . $url, true);
 
-		if (isset($this->request->get['category_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-			$category_info = $this->model_catalog_category->getCategory($this->request->get['category_id']);
+		if (isset($this->request->get['slidemenu_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+			$category_info = $this->model_catalog_slidemenu->getCategory($this->request->get['slidemenu_id']);
 		}
 
 		$data['user_token'] = $this->session->data['user_token'];
@@ -358,8 +358,8 @@ class ControllerCatalogSlidemenu extends Controller {
 
 		if (isset($this->request->post['category_description'])) {
 			$data['category_description'] = $this->request->post['category_description'];
-		} elseif (isset($this->request->get['category_id'])) {
-			$data['category_description'] = $this->model_catalog_category->getCategoryDescriptions($this->request->get['category_id']);
+		} elseif (isset($this->request->get['slidemenu_id'])) {
+			$data['category_description'] = $this->model_catalog_slidemenu->getCategoryDescriptions($this->request->get['slidemenu_id']);
 		} else {
 			$data['category_description'] = array();
 		}
@@ -384,8 +384,8 @@ class ControllerCatalogSlidemenu extends Controller {
 
 		if (isset($this->request->post['category_filter'])) {
 			$filters = $this->request->post['category_filter'];
-		} elseif (isset($this->request->get['category_id'])) {
-			$filters = $this->model_catalog_category->getCategoryFilters($this->request->get['category_id']);
+		} elseif (isset($this->request->get['slidemenu_id'])) {
+			$filters = $this->model_catalog_slidemenu->getCategoryFilters($this->request->get['slidemenu_id']);
 		} else {
 			$filters = array();
 		}
@@ -423,8 +423,8 @@ class ControllerCatalogSlidemenu extends Controller {
 
 		if (isset($this->request->post['category_store'])) {
 			$data['category_store'] = $this->request->post['category_store'];
-		} elseif (isset($this->request->get['category_id'])) {
-			$data['category_store'] = $this->model_catalog_category->getCategoryStores($this->request->get['category_id']);
+		} elseif (isset($this->request->get['slidemenu_id'])) {
+			$data['category_store'] = $this->model_catalog_slidemenu->getCategoryStores($this->request->get['slidemenu_id']);
 		} else {
 			$data['category_store'] = array(0);
 		}
@@ -481,20 +481,20 @@ class ControllerCatalogSlidemenu extends Controller {
 			$data['status'] = true;
 		}
 		
-		if (isset($this->request->post['category_seo_url'])) {
-			$data['category_seo_url'] = $this->request->post['category_seo_url'];
-		} elseif (isset($this->request->get['category_id'])) {
-			$data['category_seo_url'] = $this->model_catalog_category->getCategorySeoUrls($this->request->get['category_id']);
+		if (isset($this->request->post['slidemenu_seo_url'])) {
+			$data['slidemenu_seo_url'] = $this->request->post['slidemenu_seo_url'];
+		} elseif (isset($this->request->get['slidemenu_id'])) {
+			$data['slidemenu_seo_url'] = $this->model_catalog_slidemenu->getCategorySeoUrls($this->request->get['slidemenu_id']);
 		} else {
-			$data['category_seo_url'] = array();
+			$data['slidemenu_seo_url'] = array();
 		}
 				
-		if (isset($this->request->post['category_layout'])) {
-			$data['category_layout'] = $this->request->post['category_layout'];
-		} elseif (isset($this->request->get['category_id'])) {
-			$data['category_layout'] = $this->model_catalog_category->getCategoryLayouts($this->request->get['category_id']);
+		if (isset($this->request->post['slidemenu_layout'])) {
+			$data['slidemenu_layout'] = $this->request->post['slidemenu_layout'];
+		} elseif (isset($this->request->get['slidemenu_id'])) {
+			$data['slidemenu_layout'] = $this->model_catalog_slidemenu->getCategoryLayouts($this->request->get['slidemenu_id']);
 		} else {
-			$data['category_layout'] = array();
+			$data['slidemenu_layout'] = array();
 		}
 
 		$this->load->model('design/layout');
@@ -505,15 +505,15 @@ class ControllerCatalogSlidemenu extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/category_form', $data));
+		$this->response->setOutput($this->load->view('catalog/slidemenu_form', $data));
 	}
 
 	protected function validateForm() {
-		if (!$this->user->hasPermission('modify', 'catalog/category')) {
+		if (!$this->user->hasPermission('modify', 'catalog/slidemenu')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
-		foreach ($this->request->post['category_description'] as $language_id => $value) {
+		foreach ($this->request->post['slidemenu_description'] as $language_id => $value) {
 			if ((utf8_strlen($value['name']) < 1) || (utf8_strlen($value['name']) > 255)) {
 				$this->error['name'][$language_id] = $this->language->get('error_name');
 			}
@@ -523,11 +523,11 @@ class ControllerCatalogSlidemenu extends Controller {
 			}
 		}
 
-		if (isset($this->request->get['category_id']) && $this->request->post['parent_id']) {
-			$results = $this->model_catalog_category->getCategoryPath($this->request->post['parent_id']);
+		if (isset($this->request->get['slidemenu_id']) && $this->request->post['parent_id']) {
+			$results = $this->model_catalog_slidemenu->getCategoryPath($this->request->post['parent_id']);
 			
 			foreach ($results as $result) {
-				if ($result['path_id'] == $this->request->get['category_id']) {
+				if ($result['path_id'] == $this->request->get['slidemenu_id']) {
 					$this->error['parent'] = $this->language->get('error_parent');
 					
 					break;
@@ -535,10 +535,10 @@ class ControllerCatalogSlidemenu extends Controller {
 			}
 		}
 
-		if ($this->request->post['category_seo_url']) {
+		if ($this->request->post['slidemenu_seo_url']) {
 			$this->load->model('design/seo_url');
 			
-			foreach ($this->request->post['category_seo_url'] as $store_id => $language) {
+			foreach ($this->request->post['slidemenu_seo_url'] as $store_id => $language) {
 				foreach ($language as $language_id => $keyword) {
 					if (!empty($keyword)) {
 						if (count(array_keys($language, $keyword)) > 1) {
@@ -548,7 +548,7 @@ class ControllerCatalogSlidemenu extends Controller {
 						$seo_urls = $this->model_design_seo_url->getSeoUrlsByKeyword($keyword);
 	
 						foreach ($seo_urls as $seo_url) {
-							if (($seo_url['store_id'] == $store_id) && (!isset($this->request->get['category_id']) || ($seo_url['query'] != 'category_id=' . $this->request->get['category_id']))) {		
+							if (($seo_url['store_id'] == $store_id) && (!isset($this->request->get['slidemenu_id']) || ($seo_url['query'] != 'slidemenu_id=' . $this->request->get['slidemenu_id']))) {
 								$this->error['keyword'][$store_id][$language_id] = $this->language->get('error_keyword');
 				
 								break;
@@ -567,7 +567,7 @@ class ControllerCatalogSlidemenu extends Controller {
 	}
 
 	protected function validateDelete() {
-		if (!$this->user->hasPermission('modify', 'catalog/category')) {
+		if (!$this->user->hasPermission('modify', 'catalog/slidemenu')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
@@ -575,7 +575,7 @@ class ControllerCatalogSlidemenu extends Controller {
 	}
 
 	protected function validateRepair() {
-		if (!$this->user->hasPermission('modify', 'catalog/category')) {
+		if (!$this->user->hasPermission('modify', 'catalog/slidemenu')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
@@ -586,7 +586,7 @@ class ControllerCatalogSlidemenu extends Controller {
 		$json = array();
 
 		if (isset($this->request->get['filter_name'])) {
-			$this->load->model('catalog/category');
+			$this->load->model('catalog/slidemenu');
 
 			$filter_data = array(
 				'filter_name' => $this->request->get['filter_name'],
@@ -596,11 +596,11 @@ class ControllerCatalogSlidemenu extends Controller {
 				'limit'       => 5
 			);
 
-			$results = $this->model_catalog_category->getCategories($filter_data);
+			$results = $this->model_catalog_slidemenu->getCategories($filter_data);
 
 			foreach ($results as $result) {
 				$json[] = array(
-					'category_id' => $result['category_id'],
+					'slidemenu_id' => $result['slidemenu_id'],
 					'name'        => strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8'))
 				);
 			}

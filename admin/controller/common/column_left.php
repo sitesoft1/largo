@@ -19,6 +19,16 @@ class ControllerCommonColumnLeft extends Controller {
 			// Catalog
 			$catalog = array();
 			
+			//slide menu module
+            if ($this->user->hasPermission('access', 'catalog/slidemenu')) {
+                $catalog[] = array(
+                    'name'	   => $this->language->get('text_category'),
+                    'href'     => $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'], true),
+                    'children' => array()
+                );
+            }
+			//slide menu module END
+			
 			if ($this->user->hasPermission('access', 'catalog/category')) {
 				$catalog[] = array(
 					'name'	   => $this->language->get('text_category'),

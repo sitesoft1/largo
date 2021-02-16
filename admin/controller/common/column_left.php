@@ -27,7 +27,7 @@ class ControllerCommonColumnLeft extends Controller {
             if ($this->user->hasPermission('access', 'catalog/slidemenu')) {
                 $catalog[] = array(
                     'name'	   => $this->language->get('text_slidemenu'),
-                    'href'     => $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'], true),
+                    'href'     => $this->url->link('catalog/slidemenu', 'user_token=' . $this->session->data['user_token'], true),
                     'children' => array()
                 );
             }

@@ -3,6 +3,10 @@ class ControllerCommonColumnLeft extends Controller {
 	public function index() {
 		if (isset($this->request->get['user_token']) && isset($this->session->data['user_token']) && ($this->request->get['user_token'] == $this->session->data['user_token'])) {
 			$this->load->language('common/column_left');
+			
+			//slidemenu
+			$this->load->language('catalog/slidemenu');
+            //slidemenu END
 
 			// Create a 3 level menu array
 			// Level 2 can not have children
@@ -18,16 +22,16 @@ class ControllerCommonColumnLeft extends Controller {
 			
 			// Catalog
 			$catalog = array();
-			
-			//slide menu module
+            
+            //slidemenu
             if ($this->user->hasPermission('access', 'catalog/slidemenu')) {
                 $catalog[] = array(
-                    'name'	   => $this->language->get('text_category'),
+                    'name'	   => $this->language->get('text_slidemenu'),
                     'href'     => $this->url->link('catalog/category', 'user_token=' . $this->session->data['user_token'], true),
                     'children' => array()
                 );
             }
-			//slide menu module END
+            //slidemenu END
 			
 			if ($this->user->hasPermission('access', 'catalog/category')) {
 				$catalog[] = array(

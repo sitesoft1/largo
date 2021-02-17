@@ -51,12 +51,50 @@
                     </div>
                   </div>
 
+
                 </div>
                 {% endfor %}
               </div>
             </div>
 
             <div class="tab-pane" id="tab-data">
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-type">{{ entry_type }}</label>
+                <div class="col-sm-10">
+                  <select name="type" id="input-type" class="form-control">
+                    {% if type == 'category_url' %}
+                      <option value="custom_url">{{ entry_type_custom }}</option>
+                      <option value="category_url" selected="selected">{{ entry_type_category_url }}</option>
+                      <option value="blog_url">{{ entry_type_blog_url }}</option>
+                      <option value="information_url">{{ entry_information_url }}</option>
+                    {% elseif type == 'blog_url' %}
+                      <option value="custom_url">{{ entry_type_custom }}</option>
+                      <option value="category_url">{{ entry_type_category_url }}</option>
+                      <option value="blog_url" selected="selected">{{ entry_type_blog_url }}</option>
+                      <option value="information_url">{{ entry_information_url }}</option>
+                    {% elseif type == 'information_url' %}
+                      <option value="custom_url">{{ entry_type_custom }}</option>
+                      <option value="category_url">{{ entry_type_category_url }}</option>
+                      <option value="blog_url">{{ entry_type_blog_url }}</option>
+                      <option value="information_url" selected="selected">{{ entry_information_url }}</option>
+                    {% else %}
+                      <option value="custom_url" selected="selected">{{ entry_type_custom }}</option>
+                      <option value="category_url">{{ entry_type_category_url }}</option>
+                      <option value="blog_url">{{ entry_type_blog_url }}</option>
+                      <option value="information_url">{{ entry_information_url }}</option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group required">
+                <label class="col-sm-2 control-label">{{ entry_image }}</label>
+                <div class="col-sm-10">
+                  <a href="" id="thumb-image" data-toggle="image" class="img-thumbnail"><img src="{{ thumb }}" alt="" title="" data-placeholder="{{ placeholder }}" /></a>
+                  <input type="hidden" name="image" value="{{ image }}" id="input-image" />
+                </div>
+              </div>
 
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-sort-order">{{ entry_sort_order }}</label>

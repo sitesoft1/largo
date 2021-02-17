@@ -1,23 +1,31 @@
 <?php
 class ModelCatalogSlidemenu extends Model {
 	public function addSlidemenu($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "slidemenu SET `type` = '', source='', sort_order='". (int)$data['sort_order'] ."', status='". (int)$data['status'] ."'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "slidemenu SET `type` = '" . $this->db->escape($data['type']) . "', source='', sort_order='". (int)$data['sort_order'] ."', status='". (int)$data['status'] ."'");
 
 		$slidemenu_id = $this->db->getLastId();
         
-        foreach ($data['slidemenu_description'] as $language_id => $value) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "slidemenu_description SET slidemenu_id = '" . (int)$slidemenu_id . "', language_id = '" . (int)$language_id . "', slidemenu_name = '" . $this->db->escape($value['slidemenu_name']) . "', slidemenu_slide = ''");
+        if (isset($data['image'])) {
+            $this->db->query("UPDATE " . DB_PREFIX . "slidemenu SET image = '" . $this->db->escape($data['image']) . "' WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
         }
-		
+        
+        foreach ($data['slidemenu_description'] as $language_id => $value) {
+            $this->db->query("INSERT INTO " . DB_PREFIX . "slidemenu_description SET slidemenu_id = '" . (int)$slidemenu_id . "', language_id = '" . (int)$language_id . "', slidemenu_name = '" . $this->db->escape($value['slidemenu_name']) . "'");
+        }
+        
 		return $slidemenu_id;
 	}
 
 	public function editSlidemenu($slidemenu_id, $data) {
-		$this->db->query("UPDATE " . DB_PREFIX . "slidemenu SET `type` = '', source='', sort_order='". (int)$data['sort_order'] ."', status='". (int)$data['status'] ."' WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
+		$this->db->query("UPDATE " . DB_PREFIX . "slidemenu SET `type` = '" . $this->db->escape($data['type']) . "', source='', sort_order='". (int)$data['sort_order'] ."', status='". (int)$data['status'] ."' WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
+        
+        if (isset($data['image'])) {
+            $this->db->query("UPDATE " . DB_PREFIX . "slidemenu SET image = '" . $this->db->escape($data['image']) . "' WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
+        }
 		
 		$this->db->query("DELETE FROM " . DB_PREFIX . "slidemenu_description WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
         foreach ($data['slidemenu_description'] as $language_id => $value) {
-            $this->db->query("INSERT INTO " . DB_PREFIX . "slidemenu_description SET slidemenu_id = '" . (int)$slidemenu_id . "', language_id = '" . (int)$language_id . "', slidemenu_name = '" . $this->db->escape($value['slidemenu_name']) . "', slidemenu_slide = ''");
+            $this->db->query("INSERT INTO " . DB_PREFIX . "slidemenu_description SET slidemenu_id = '" . (int)$slidemenu_id . "', language_id = '" . (int)$language_id . "', slidemenu_name = '" . $this->db->escape($value['slidemenu_name']) . "'");
         }
 	}
     
@@ -35,8 +43,7 @@ class ModelCatalogSlidemenu extends Model {
         
         foreach ($query->rows as $result) {
             $category_slidemenu_data[$result['language_id']] = array(
-                'slidemenu_name'             => $result['slidemenu_name'],
-                'slidemenu_slide'             => $result['slidemenu_slide'],
+                'slidemenu_name'             => $result['slidemenu_name']
             );
         }
         
@@ -52,7 +59,7 @@ class ModelCatalogSlidemenu extends Model {
     public function getSlidemenues($data = array()) {
         //$sql = "SELECT cp.category_id AS category_id, GROUP_CONCAT(cd1.name ORDER BY cp.level SEPARATOR '&nbsp;&nbsp;&gt;&nbsp;&nbsp;') AS name, c1.parent_id, c1.sort_order FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "category c1 ON (cp.category_id = c1.category_id) LEFT JOIN " . DB_PREFIX . "category c2 ON (cp.path_id = c2.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd1 ON (cp.path_id = cd1.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (cp.category_id = cd2.category_id) WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
         //$sql = "SELECT * FROM " . DB_PREFIX . "slidemenu LEFT JOIN " . DB_PREFIX . "slidemenu_description ON " . DB_PREFIX . "slidemenu.slidemenu_id = " . DB_PREFIX . "slidemenu_description.slidemenu_id";
-        $sql = "SELECT sdm.slidemenu_id, sdm.type, sdm.source, sdm.sort_order, sdm.status, sdm_d.slidemenu_name, sdm_d.slidemenu_slide FROM " . DB_PREFIX . "slidemenu sdm LEFT JOIN " . DB_PREFIX . "slidemenu_description sdm_d ON sdm.slidemenu_id = sdm_d.slidemenu_id WHERE sdm_d.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+        $sql = "SELECT sdm.slidemenu_id, sdm.type, sdm.source, sdm.sort_order, sdm.status, sdm.image, sdm_d.slidemenu_name FROM " . DB_PREFIX . "slidemenu sdm LEFT JOIN " . DB_PREFIX . "slidemenu_description sdm_d ON sdm.slidemenu_id = sdm_d.slidemenu_id WHERE sdm_d.language_id = '" . (int)$this->config->get('config_language_id') . "'";
         
         if (isset($data['start']) || isset($data['limit'])) {
             if ($data['start'] < 0) {

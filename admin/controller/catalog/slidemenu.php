@@ -350,6 +350,14 @@ class ControllerCatalogSlidemenu extends Controller {
         } else {
             $data['status'] = true;
         }
+        
+        if (isset($this->request->post['type'])) {
+            $data['type'] = $this->request->post['type'];
+        } elseif (!empty($category_info)) {
+            $data['type'] = $category_info['type'];
+        } else {
+            $data['type'] = true;
+        }
 		
 		
 		/*
@@ -370,7 +378,7 @@ class ControllerCatalogSlidemenu extends Controller {
 				'name'     => $store['name']
 			);
 		}
-		
+		*/
 
 		if (isset($this->request->post['image'])) {
 			$data['image'] = $this->request->post['image'];
@@ -391,7 +399,7 @@ class ControllerCatalogSlidemenu extends Controller {
 		}
 
 		$data['placeholder'] = $this->model_tool_image->resize('no_image.png', 100, 100);
-		*/
+		
 		
 
 		

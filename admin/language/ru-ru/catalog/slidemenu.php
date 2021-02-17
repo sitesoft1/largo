@@ -18,6 +18,14 @@ $_['column_action'] = 'Дія';
 
 // Entry
 $_['entry_name'] = 'Имя пункта меню';
+
+$_['entry_image'] = 'Изображение слайда';
+$_['entry_type'] = 'Тип ссылки';
+$_['entry_type_custom'] = 'Произвольная ссылка';
+$_['entry_type_category_url'] = 'Ссылка на категорию';
+$_['entry_type_blog_url'] = 'Ссылка на блог';
+$_['entry_information_url'] = 'Ссылка на инфо страницу';
+
 $_['entry_description'] = 'Опис';
 $_['entry_meta_title'] = 'Мета-тег Title';
 $_['entry_meta_keyword'] = 'Мета-тег Keywords';
@@ -26,7 +34,6 @@ $_['entry_keyword'] = 'SEO URL';
 $_['entry_parent'] = 'Батьківська категорія';
 $_['entry_filter'] = 'Фільтри';
 $_['entry_store'] = 'Магазини';
-$_['entry_image'] = 'Зображення категорії';
 $_['entry_top'] = 'Головне меню';
 $_['entry_column'] = 'Стовбці';
 $_['entry_sort_order'] = 'Порядок сортування';

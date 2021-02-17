@@ -356,7 +356,15 @@ class ControllerCatalogSlidemenu extends Controller {
         } elseif (!empty($category_info)) {
             $data['type'] = $category_info['type'];
         } else {
-            $data['type'] = true;
+            $data['type'] = 'custom_url';
+        }
+        
+        if (isset($this->request->post['source'])) {
+            $data['source'] = $this->request->post['source'];
+        } elseif (!empty($category_info)) {
+            $data['source'] = $category_info['source'];
+        } else {
+            $data['source'] = array('custom_url'=>'');
         }
 		
 		

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 17 2021 г., 05:52
+-- Время создания: Фев 17 2021 г., 09:21
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.3.26
 
@@ -31,18 +31,17 @@ CREATE TABLE `oc_slidemenu_description` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `slidemenu_id` bigint(20) NOT NULL,
   `language_id` int(11) NOT NULL,
-  `slidemenu_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slidemenu_slide` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL
+  `slidemenu_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `oc_slidemenu_description`
 --
 
-INSERT INTO `oc_slidemenu_description` (`id`, `slidemenu_id`, `language_id`, `slidemenu_name`, `slidemenu_slide`) VALUES
-(21, 3, 1, 'Test item 5', ''),
-(20, 3, 3, 'Тестовый пункт 5', ''),
-(19, 3, 2, 'Тестовий пункт меню 5', '');
+INSERT INTO `oc_slidemenu_description` (`id`, `slidemenu_id`, `language_id`, `slidemenu_name`) VALUES
+(78, 3, 1, 'Test item 5'),
+(77, 3, 3, 'Тестовый пункт 5'),
+(76, 3, 2, 'Тестовий пункт меню 5');
 
 --
 -- Индексы сохранённых таблиц
@@ -62,7 +61,7 @@ ALTER TABLE `oc_slidemenu_description`
 -- AUTO_INCREMENT для таблицы `oc_slidemenu_description`
 --
 ALTER TABLE `oc_slidemenu_description`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -10,16 +10,7 @@ class ModelCatalogSlidemenu extends Model {
         }
         
         if (isset($data['source'])) {
-    
             $this->db->query("UPDATE " . DB_PREFIX . "slidemenu SET source = '" . $this->db->escape(serialize($data['source'])) . "' WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
-            
-            /*
-            foreach ($data['source'] as $key => $value) {
-                if($key == $data['type']){
-                    $this->db->query("UPDATE " . DB_PREFIX . "slidemenu SET source = '" . $this->db->escape($value) . "' WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
-                }
-            }
-            */
         }
         
         foreach ($data['slidemenu_description'] as $language_id => $value) {
@@ -37,16 +28,7 @@ class ModelCatalogSlidemenu extends Model {
         }
         
         if (isset($data['source'])) {
-            
             $this->db->query("UPDATE " . DB_PREFIX . "slidemenu SET source = '" . $this->db->escape(serialize($data['source'])) . "' WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
-            
-            /*
-            foreach ($data['source'] as $key => $value) {
-                if($key == $data['type']){
-                    $this->db->query("UPDATE " . DB_PREFIX . "slidemenu SET source = '" . $this->db->escape($value) . "' WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
-                }
-            }
-            */
         }
 		
 		$this->db->query("DELETE FROM " . DB_PREFIX . "slidemenu_description WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");

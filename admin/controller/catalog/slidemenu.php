@@ -364,7 +364,9 @@ class ControllerCatalogSlidemenu extends Controller {
         } elseif (!empty($category_info)) {
             $data['source'] = unserialize($category_info['source']);
         } else {
-            $data['source'] = array('custom_url'=>'');
+            $data['source'] = array(
+                'custom_url' => array('url'=>'', 'path'=>'')
+            );
         }
 		
 		

@@ -21,7 +21,7 @@ $_['entry_name'] = 'Имя пункта меню';
 
 $_['entry_image'] = 'Изображение слайда';
 $_['entry_type'] = 'Тип ссылки';
-$_['entry_type_custom'] = 'Произвольная ссылка';
+$_['entry_type_custom_url'] = 'Произвольная ссылка';
 $_['entry_type_category_url'] = 'Ссылка на категорию';
 $_['entry_type_blog_url'] = 'Ссылка на блог';
 $_['entry_type_information_url'] = 'Ссылка на инфо страницу';

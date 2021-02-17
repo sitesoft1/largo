@@ -64,42 +64,27 @@
                 <div class="col-sm-10">
                   <select name="type" id="input-type" class="form-control">
                     {% if type == 'category_url' %}
-                      <option value="custom_url">{{ entry_type_custom }}</option>
+                      <option value="custom_url">{{ entry_type_custom_url }}</option>
                       <option value="category_url" selected="selected">{{ entry_type_category_url }}</option>
-                      <option value="blog_url">{{ entry_type_blog_url }}</option>
-                      <option value="information_url">{{ entry_type_information_url }}</option>
-                    {% elseif type == 'blog_url' %}
-                      <option value="custom_url">{{ entry_type_custom }}</option>
-                      <option value="category_url">{{ entry_type_category_url }}</option>
-                      <option value="blog_url" selected="selected">{{ entry_type_blog_url }}</option>
                       <option value="information_url">{{ entry_type_information_url }}</option>
                     {% elseif type == 'information_url' %}
-                      <option value="custom_url">{{ entry_type_custom }}</option>
+                      <option value="custom_url">{{ entry_type_custom_url }}</option>
                       <option value="category_url">{{ entry_type_category_url }}</option>
-                      <option value="blog_url">{{ entry_type_blog_url }}</option>
                       <option value="information_url" selected="selected">{{ entry_type_information_url }}</option>
                     {% else %}
-                      <option value="custom_url" selected="selected">{{ entry_type_custom }}</option>
+                      <option value="custom_url" selected="selected">{{ entry_type_custom_url }}</option>
                       <option value="category_url">{{ entry_type_category_url }}</option>
-                      <option value="blog_url">{{ entry_type_blog_url }}</option>
                       <option value="information_url">{{ entry_type_information_url }}</option>
                     {% endif %}
                   </select>
                 </div>
               </div>
 
-
               <div id="custom_url" class="form-group type">
-                <label class="col-sm-2 control-label" for="input-parent">{{ entry_type_custom }}</label>
+                <label class="col-sm-2 control-label" for="input-custom_url">{{ entry_type_custom_url }}</label>
                 <div class="col-sm-10">
-                  <input type="text" name="source[custom_url]" value="{{ source.custom_url }}" placeholder="{{ entry_type_custom }}" id="input-parent" class="form-control" />
-                </div>
-              </div>
-
-              <div id="blog_url" class="form-group type">
-                <label class="col-sm-2 control-label" for="input-parent">{{ entry_type_blog_url }}</label>
-                <div class="col-sm-10">
-                  <input type="text" name="source[blog_url]" value="{{ source.blog_url }}" placeholder="{{ entry_type_blog_url }}" id="input-blog_url" class="form-control" />
+                  <input type="text" name="source[custom_url][path]" value="{{ source.custom_url.path }}" placeholder="{{ entry_type_custom_url }}" id="input-custom_url" class="form-control" />
+                  <input type="hidden" name="source[custom_url][custom_id]" value="{{ source.custom_url.custom_id }}" />
                 </div>
               </div>
 
@@ -118,6 +103,13 @@
                   <input type="hidden" name="source[category_url][category_id]" value="{{ source.category_url.category_id }}" />
                 </div>
               </div>
+
+              <!--<div id="blog_url" class="form-group type">
+                <label class="col-sm-2 control-label" for="input-parent">{{ entry_type_blog_url }}</label>
+                <div class="col-sm-10">
+                  <input type="text" name="source[blog_url]" value="{{ source.blog_url }}" placeholder="{{ entry_type_blog_url }}" id="input-blog_url" class="form-control" />
+                </div>
+              </div>-->
 
               <script>
                 $('.type').hide();

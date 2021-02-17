@@ -21,7 +21,7 @@ $_['entry_name'] = 'Menu item name';
 
 $_['entry_image'] = 'Slide image';
 $_['entry_type'] = 'Link type';
-$_['entry_type_custom'] = 'Произвольная ссылка';
+$_['entry_type_custom_url'] = 'Произвольная ссылка';
 $_['entry_type_category_url'] = 'Category url';
 $_['entry_type_blog_url'] = 'Blog url';
 $_['entry_type_information_url'] = 'Information url';

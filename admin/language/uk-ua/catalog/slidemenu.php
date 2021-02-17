@@ -22,7 +22,7 @@ $_['entry_name'] = 'Імя пункту меню';
 
 $_['entry_image'] = 'Зображення слайду';
 $_['entry_type'] = 'Тип посилання';
-$_['entry_type_custom'] = 'Довільне посилання';
+$_['entry_type_custom_url'] = 'Довільне посилання';
 $_['entry_type_category_url'] = 'Посилання на категорію';
 $_['entry_type_blog_url'] = 'Посилання на блог';
 $_['entry_type_information_url'] = 'Посилання на Інформаційні сторінки';

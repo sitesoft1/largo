@@ -96,7 +96,13 @@ class ModelCatalogInformation extends Model {
 	public function getInformations($data = array()) {
 		if ($data) {
 			$sql = "SELECT * FROM " . DB_PREFIX . "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE id.language_id = '" . (int)$this->config->get('config_language_id') . "'";
-
+            
+            //slidemenu
+			if (!empty($data['filter_name'])) {
+                $sql .= " AND id.title LIKE '%" . $this->db->escape($data['filter_name']) . "%'";
+            }
+            //slidemenu END
+			
 			$sort_data = array(
 				'id.title',
 				'i.sort_order'

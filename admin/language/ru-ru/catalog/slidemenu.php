@@ -24,7 +24,7 @@ $_['entry_type'] = 'Тип ссылки';
 $_['entry_type_custom'] = 'Произвольная ссылка';
 $_['entry_type_category_url'] = 'Ссылка на категорию';
 $_['entry_type_blog_url'] = 'Ссылка на блог';
-$_['entry_information_url'] = 'Ссылка на инфо страницу';
+$_['entry_type_information_url'] = 'Ссылка на инфо страницу';
 
 $_['entry_description'] = 'Опис';
 $_['entry_meta_title'] = 'Мета-тег Title';

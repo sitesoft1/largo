@@ -25,7 +25,7 @@ $_['entry_type'] = 'Тип посилання';
 $_['entry_type_custom'] = 'Довільне посилання';
 $_['entry_type_category_url'] = 'Посилання на категорію';
 $_['entry_type_blog_url'] = 'Посилання на блог';
-$_['entry_information_url'] = 'Посилання на Інформаційні сторінки';
+$_['entry_type_information_url'] = 'Посилання на Інформаційні сторінки';
 
 $_['entry_description'] = 'Опис';
 $_['entry_meta_title'] = 'Мета-тег Title';

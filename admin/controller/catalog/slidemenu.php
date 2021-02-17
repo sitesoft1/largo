@@ -362,7 +362,7 @@ class ControllerCatalogSlidemenu extends Controller {
         if (isset($this->request->post['source'])) {
             $data['source'] = $this->request->post['source'];
         } elseif (!empty($category_info)) {
-            $data['source'] = $category_info['source'];
+            $data['source'] = unserialize($category_info['source']);
         } else {
             $data['source'] = array('custom_url'=>'');
         }

@@ -24,43 +24,45 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `oc_slidemenu`
+-- Структура таблицы `oc_slidemenu_description`
 --
 
-CREATE TABLE `oc_slidemenu` (
-  `slidemenu_id` bigint(20) UNSIGNED NOT NULL,
-  `type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `source` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `sort_order` int(3) NOT NULL DEFAULT '0',
-  `status` tinyint(1) NOT NULL DEFAULT '1'
+CREATE TABLE `oc_slidemenu_description` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `slidemenu_id` bigint(20) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `slidemenu_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slidemenu_slide` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `oc_slidemenu`
+-- Дамп данных таблицы `oc_slidemenu_description`
 --
 
-INSERT INTO `oc_slidemenu` (`slidemenu_id`, `type`, `source`, `sort_order`, `status`) VALUES
-(3, '', '', 1, 1);
+INSERT INTO `oc_slidemenu_description` (`id`, `slidemenu_id`, `language_id`, `slidemenu_name`, `slidemenu_slide`) VALUES
+(21, 3, 1, 'Test item 5', ''),
+(20, 3, 3, 'Тестовый пункт 5', ''),
+(19, 3, 2, 'Тестовий пункт меню 5', '');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `oc_slidemenu`
+-- Индексы таблицы `oc_slidemenu_description`
 --
-ALTER TABLE `oc_slidemenu`
-  ADD UNIQUE KEY `id` (`slidemenu_id`);
+ALTER TABLE `oc_slidemenu_description`
+  ADD UNIQUE KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT для таблицы `oc_slidemenu`
+-- AUTO_INCREMENT для таблицы `oc_slidemenu_description`
 --
-ALTER TABLE `oc_slidemenu`
-  MODIFY `slidemenu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `oc_slidemenu_description`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

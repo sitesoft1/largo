@@ -1,48 +1,48 @@
 <?php
 // Heading
 $_['text_slidemenu'] = 'Слайд меню';
-$_['heading_title']          = 'Categories';
+$_['heading_title']          = 'Слайд меню';
+$_['menu_item_name'] = 'Menu item name';
 
 // Text
-$_['text_success']           = 'Success: You have modified categories!';
-$_['text_list']              = 'Category List';
-$_['text_add']               = 'Add Category';
-$_['text_edit']              = 'Edit Category';
-$_['text_default']           = 'Default';
-$_['text_keyword']           = 'Do not use spaces, instead replace spaces with - and make sure the SEO URL is globally unique.';
+$_['text_success'] = 'Налаштування успішно змінено!';
+$_['text_list'] = 'Меню';
+$_['text_add'] = 'Додати';
+$_['text_edit'] = 'Редагувати';
+$_['text_default'] = 'Основний магазин';
 
 // Column
-$_['column_name']            = 'Category Name';
-$_['column_sort_order']      = 'Sort Order';
-$_['column_action']          = 'Action';
+$_['column_name'] = 'Меню';
+$_['column_sort_order'] = 'Порядок сортування';
+$_['column_action'] = 'Дія';
 
 // Entry
-$_['entry_name']             = 'Category Name';
-$_['entry_description']      = 'Description';
-$_['entry_meta_title'] 	     = 'Meta Tag Title';
-$_['entry_meta_keyword']     = 'Meta Tag Keywords';
-$_['entry_meta_description'] = 'Meta Tag Description';
-$_['entry_store']            = 'Stores';
-$_['entry_keyword']          = 'Keyword';
-$_['entry_parent']           = 'Parent';
-$_['entry_filter']           = 'Filters';
-$_['entry_image']            = 'Image';
-$_['entry_top']              = 'Top';
-$_['entry_column']           = 'Columns';
-$_['entry_sort_order']       = 'Sort Order';
-$_['entry_status']           = 'Status';
-$_['entry_layout']           = 'Layout Override';
+$_['entry_name'] = 'Menu item name';
+$_['entry_description'] = 'Опис';
+$_['entry_meta_title'] = 'Мета-тег Title';
+$_['entry_meta_keyword'] = 'Мета-тег Keywords';
+$_['entry_meta_description'] = 'Мета-тег Description';
+$_['entry_keyword'] = 'SEO URL';
+$_['entry_parent'] = 'Батьківська категорія';
+$_['entry_filter'] = 'Фільтри';
+$_['entry_store'] = 'Магазини';
+$_['entry_image'] = 'Зображення категорії';
+$_['entry_top'] = 'Головне меню';
+$_['entry_column'] = 'Стовбці';
+$_['entry_sort_order'] = 'Порядок сортування';
+$_['entry_status'] = 'Статус';
+$_['entry_layout'] = 'Макет';
 
 // Help
-$_['help_filter']            = '(Autocomplete)';
-$_['help_top']               = 'Display in the top menu bar. Only works for the top parent categories.';
-$_['help_column']            = 'Number of columns to use for the bottom 3 categories. Only works for the top parent categories.';
+$_['help_filter'] = '(Автозаповнення)';
+$_['help_keyword'] = 'Повинно бути унікальним на всю систему.';
+$_['help_top'] = 'Показувати в головному меню (тільки для головних батьківських категорій).';
+$_['help_column'] = 'Кількість стовпців у випадаючому меню категорії (тільки для головних батьківських категорій)';
 
 // Error
-$_['error_warning']          = 'Warning: Please check the form carefully for errors!';
-$_['error_permission']       = 'Warning: You do not have permission to modify categories!';
-$_['error_name']             = 'Category Name must be between 1 and 255 characters!';
-$_['error_meta_title']       = 'Meta Title must be greater than 1 and less than 255 characters!';
-$_['error_keyword']          = 'SEO URL already in use!';
-$_['error_unique']           = 'SEO URL must be unique!';
-$_['error_parent']           = 'The parent category you have chosen is a child of the current one!';
+$_['error_warning'] = 'Уважно перевірте форму на помилки!';
+$_['error_permission'] = 'У Вас немає прав для зміни категорій!';
+$_['error_name'] = 'Назва категорії повинне бути від 2 до 255 символів!';
+$_['error_meta_title'] = 'Ключове слово повинно бути від 3 до 255 символів!';
+$_['error_keyword'] = 'SEO URL зайнятий!';
+$_['error_parent'] = 'Батьківська категорія обрана неправильно!';

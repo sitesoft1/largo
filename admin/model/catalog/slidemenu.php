@@ -1,9 +1,7 @@
 <?php
 class ModelCatalogSlidemenu extends Model {
     public function install() {
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "slidemenu LIMIT 1");
-        if($query->num_rows == 0){
-            $this->db->query("CREATE TABLE IF NOT EXISTS `".DB_PREFIX."slidemenu` (
+        $this->db->query("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "slidemenu` (
               `slidemenu_id` bigint(20) UNSIGNED NOT NULL,
               `type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
               `source` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -11,17 +9,26 @@ class ModelCatalogSlidemenu extends Model {
               `status` tinyint(1) NOT NULL DEFAULT '1',
               `image` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL
             ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
-        }
-    
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "slidemenu_description LIMIT 1");
-        if($query->num_rows == 0){
-            $this->db->query("CREATE TABLE `" . DB_PREFIX . "slidemenu_description` (
+        
+        $this->db->query("CREATE TABLE IF NOT EXISTS `" . DB_PREFIX . "slidemenu_description` (
               `id` bigint(20) UNSIGNED NOT NULL,
               `slidemenu_id` bigint(20) NOT NULL,
               `language_id` int(11) NOT NULL,
               `slidemenu_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
             ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
+        
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "slidemenu LIMIT 1");
+        if($query->num_rows == 0){
+            $this->db->query("ALTER TABLE `" . DB_PREFIX . "slidemenu` ADD UNIQUE KEY `id` (`slidemenu_id`);");
+            $this->db->query("ALTER TABLE `" . DB_PREFIX . "slidemenu` MODIFY `slidemenu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;");
         }
+        
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "slidemenu_description LIMIT 1");
+        if($query->num_rows == 0){
+            $this->db->query("ALTER TABLE `" . DB_PREFIX . "slidemenu_description` ADD UNIQUE KEY `id` (`id`);");
+            $this->db->query("ALTER TABLE `" . DB_PREFIX . "slidemenu_description` MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;");
+        }
+        
     }
     
 	public function addSlidemenu($data) {

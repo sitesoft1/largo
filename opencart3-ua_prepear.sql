@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 18 2021 г., 15:09
+-- Время создания: Фев 18 2021 г., 15:14
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.3.26
 
@@ -52,6 +52,55 @@ INSERT INTO `oc_slidemenu` (`slidemenu_id`, `type`, `source`, `sort_order`, `sta
 (11, 'custom_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:1:\"#\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 9, 1, 'catalog/slides/n3.png'),
 (12, 'category_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:1:\"#\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:11:\"MP3 Players\";s:11:\"category_id\";s:2:\"34\";}}', 10, 1, 'catalog/slides/n2.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `oc_slidemenu_description`
+--
+
+CREATE TABLE `oc_slidemenu_description` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `slidemenu_id` bigint(20) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `slidemenu_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `oc_slidemenu_description`
+--
+
+INSERT INTO `oc_slidemenu_description` (`id`, `slidemenu_id`, `language_id`, `slidemenu_name`) VALUES
+(279, 13, 1, 'Тест 11'),
+(278, 13, 3, 'Тест 11'),
+(273, 4, 1, 'Installation'),
+(272, 4, 3, 'Монтаж'),
+(271, 4, 2, 'Монтаж'),
+(239, 9, 3, 'Отзывы'),
+(259, 6, 2, 'Контакти'),
+(270, 5, 1, 'Service'),
+(268, 5, 2, 'Сервіс'),
+(269, 5, 3, 'Сервис'),
+(261, 6, 1, 'Contacts'),
+(263, 7, 3, 'Компоненты'),
+(264, 7, 1, 'Components'),
+(234, 8, 1, 'Awards'),
+(233, 8, 3, 'Награды'),
+(232, 8, 2, 'Відзнаки'),
+(277, 13, 2, 'Тест 11'),
+(260, 6, 3, 'Контакты'),
+(262, 7, 2, 'Компоненти'),
+(238, 9, 2, 'Відгуки'),
+(240, 9, 1, 'Reviews'),
+(241, 10, 2, 'Пропозиції'),
+(242, 10, 3, 'Пропозиції'),
+(243, 10, 1, 'Пропозиції'),
+(255, 11, 1, 'Тест'),
+(254, 11, 3, 'Тест'),
+(253, 11, 2, 'Тест'),
+(258, 12, 1, 'Test10'),
+(257, 12, 3, 'Test10'),
+(256, 12, 2, 'Test10');
+
 --
 -- Индексы сохранённых таблиц
 --
@@ -63,6 +112,12 @@ ALTER TABLE `oc_slidemenu`
   ADD UNIQUE KEY `id` (`slidemenu_id`);
 
 --
+-- Индексы таблицы `oc_slidemenu_description`
+--
+ALTER TABLE `oc_slidemenu_description`
+  ADD UNIQUE KEY `id` (`id`);
+
+--
 -- AUTO_INCREMENT для сохранённых таблиц
 --
 
@@ -71,6 +126,12 @@ ALTER TABLE `oc_slidemenu`
 --
 ALTER TABLE `oc_slidemenu`
   MODIFY `slidemenu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT для таблицы `oc_slidemenu_description`
+--
+ALTER TABLE `oc_slidemenu_description`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

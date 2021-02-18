@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 18 2021 г., 14:31
+-- Время создания: Фев 18 2021 г., 15:10
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.3.26
 
@@ -39,8 +39,8 @@ CREATE TABLE `oc_slidemenu_description` (
 --
 
 INSERT INTO `oc_slidemenu_description` (`id`, `slidemenu_id`, `language_id`, `slidemenu_name`) VALUES
-(228, 3, 1, 'Sales'),
-(227, 3, 3, 'Продажа'),
+(279, 13, 1, 'Тест 11'),
+(278, 13, 3, 'Тест 11'),
 (273, 4, 1, 'Installation'),
 (272, 4, 3, 'Монтаж'),
 (271, 4, 2, 'Монтаж'),
@@ -55,7 +55,7 @@ INSERT INTO `oc_slidemenu_description` (`id`, `slidemenu_id`, `language_id`, `sl
 (234, 8, 1, 'Awards'),
 (233, 8, 3, 'Награды'),
 (232, 8, 2, 'Відзнаки'),
-(226, 3, 2, 'Продаж'),
+(277, 13, 2, 'Тест 11'),
 (260, 6, 3, 'Контакты'),
 (262, 7, 2, 'Компоненти'),
 (238, 9, 2, 'Відгуки'),
@@ -88,7 +88,7 @@ ALTER TABLE `oc_slidemenu_description`
 -- AUTO_INCREMENT для таблицы `oc_slidemenu_description`
 --
 ALTER TABLE `oc_slidemenu_description`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=274;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

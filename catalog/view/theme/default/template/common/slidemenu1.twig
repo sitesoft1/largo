@@ -1,0 +1,33 @@
+{% if slidemenu %}
+<div class="container">
+  <nav id="menu" class="navbar">
+    <div class="navbar-header"><span id="category" class="visible-xs">{{ text_category }}</span>
+      <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul id="sbi_container" class="sbi_container nav navbar-nav">
+        {% for category in slidemenu %}
+        {% if category.children %}
+        <li class="sbi_panel dropdown" data-bg="{{ category.image }}"><a href="{{ category.href }}" class="sbi_label dropdown-toggle" data-toggle="dropdown">{{ category.name }}</a>
+          <div class="sbi_content"></div>
+          <div class="dropdown-menu">
+            <div class="dropdown-inner"> {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+              <ul class="list-unstyled">
+                {% for child in children %}
+                <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+                {% endfor %}
+              </ul>
+              {% endfor %}</div>
+            <a href="{{ category.href }}" class="see-all">{{ text_all }} {{ category.name }}</a> </div>
+        </li>
+        {% else %}
+        <li class="sbi_panel" data-bg="{{ category.image }}"><a class="sbi_label" href="{{ category.href }}">{{ category.name }}</a>
+          <div class="sbi_content"></div>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+</div>
+{% endif %} 

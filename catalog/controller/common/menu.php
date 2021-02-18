@@ -92,7 +92,7 @@ class ControllerCommonMenu extends Controller {
                     // Level 1
                     $data['slidemenu'][] = array(
                         'name'     => $slidemenu_name,
-                        'image'    => $image,
+                        'image'    => 'image/'.$image,
                         'children' => $children_data,
                         'column'   => $category['column'] ? $category['column'] : 1,
                         'href'     => $href

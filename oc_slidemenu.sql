@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 18 2021 г., 06:54
+-- Время создания: Фев 18 2021 г., 10:53
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.3.26
 
@@ -41,10 +41,16 @@ CREATE TABLE `oc_slidemenu` (
 --
 
 INSERT INTO `oc_slidemenu` (`slidemenu_id`, `type`, `source`, `sort_order`, `status`, `image`) VALUES
-(3, 'category_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:20:\"https://ocstore.com/\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:8:\"About Us\";s:14:\"information_id\";s:1:\"4\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:23:\"Desktops  &gt;  Mac\";s:11:\"category_id\";s:2:\"27\";}}', 0, 1, 'catalog/slides/n3.png'),
-(4, 'information_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:0:\"\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:8:\"About Us\";s:14:\"information_id\";s:1:\"4\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 1, 1, 'catalog/slides/n2.jpg'),
-(5, 'custom_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:25:\"https://www.opencart.com/\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 2, 1, 'catalog/slides/n4.jpeg'),
-(6, 'custom_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:23:\"https://www.google.com/\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 4, 0, 'catalog/slides/n1.jpg');
+(3, 'category_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:20:\"https://ocstore.com/\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:8:\"About Us\";s:14:\"information_id\";s:1:\"4\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:23:\"Desktops  &gt;  Mac\";s:11:\"category_id\";s:2:\"27\";}}', 4, 1, 'catalog/demo/banners/iPhone1.jpg'),
+(4, 'information_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:0:\"\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:8:\"About Us\";s:14:\"information_id\";s:1:\"4\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 1, 1, 'catalog/demo/banners/iPhone2.jpg'),
+(5, 'custom_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:25:\"https://www.opencart.com/\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 2, 1, 'catalog/demo/banners/iPhone3.jpg'),
+(6, 'custom_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:23:\"https://www.google.com/\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 3, 1, 'catalog/demo/banners/iPhone4.jpg'),
+(7, 'category_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:0:\"\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:10:\"Components\";s:11:\"category_id\";s:2:\"25\";}}', 0, 1, 'catalog/demo/banners/iPhone5.jpg'),
+(8, 'category_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:0:\"\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:11:\"MP3 Players\";s:11:\"category_id\";s:2:\"34\";}}', 5, 1, 'catalog/demo/banners/iPhone6.jpg'),
+(9, 'custom_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:1:\"#\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 6, 1, 'catalog/demo/banners/iPhone7.jpg'),
+(10, 'custom_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:1:\"#\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 8, 1, 'catalog/demo/banners/iPhone8.jpg'),
+(11, 'custom_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:1:\"#\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 9, 1, 'catalog/demo/banners/iPhone9.jpg'),
+(12, 'custom_url', 'a:3:{s:10:\"custom_url\";a:2:{s:4:\"path\";s:1:\"#\";s:9:\"custom_id\";s:0:\"\";}s:15:\"information_url\";a:2:{s:4:\"path\";s:0:\"\";s:14:\"information_id\";s:0:\"\";}s:12:\"category_url\";a:2:{s:4:\"path\";s:0:\"\";s:11:\"category_id\";s:0:\"\";}}', 10, 1, 'catalog/demo/banners/iPhone10.jpg');
 
 --
 -- Индексы сохранённых таблиц
@@ -64,7 +70,7 @@ ALTER TABLE `oc_slidemenu`
 -- AUTO_INCREMENT для таблицы `oc_slidemenu`
 --
 ALTER TABLE `oc_slidemenu`
-  MODIFY `slidemenu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `slidemenu_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

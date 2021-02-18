@@ -37,8 +37,7 @@
 				
 				// set the width, height and background image of the main container
 				$el.css({
-					//'width'				: panelWidth * nmbPanels + 'px',
-					'width'				: '100%',
+					'width'				: panelWidth * nmbPanels + 'px',
 					'height'			: settings.height + 'px'
 				});
 				// if defaultBg is passed then defaultBg is set as background, 

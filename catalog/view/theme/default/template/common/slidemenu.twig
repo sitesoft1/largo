@@ -1,11 +1,52 @@
 {% if slidemenu %}
-        <div id="sbi_container" class="sbi_container">
-            {% for item in slidemenu %}
-                <div class="sbi_panel" data-bg="{{ item.image }}">
-                    <a href="{{ item.href }}" class="sbi_label">{{ item.name }}</a>
-                    <div class="sbi_content">
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
+    <div class="container">
+
+        <!-- Slide menu -->
+            <div id="slidemenu"></div>
+        <!-- Slide menu END -->
+
+        <nav id="menu" class="navbar">
+            <div class="navbar-header"><span id="category" class="visible-xs">{{ text_category }}</span>
+                <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    {% for category in slidemenu %}
+                        {% if category.children %}
+                            <li class="first-level" data-image="{{ category.image }}" class="dropdown"><a href="{{ category.href }}" class="dropdown-toggle" data-toggle="dropdown">{{ category.name }}</a>
+                                <div class="dropdown-menu">
+                                    <div class="dropdown-inner"> {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+                                            <ul class="list-unstyled">
+                                                {% for child in children %}
+                                                    <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endfor %}</div>
+                                    <a href="{{ category.href }}" class="see-all">{{ text_all }} {{ category.name }}</a> </div>
+                            </li>
+                        {% else %}
+                            <li class="first-level" data-image="{{ category.image }}"><a href="{{ category.href }}">{{ category.name }}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            console.log( "ready!" );
+            $('.first-level').hover(onIn, onOut);
+
+            function onIn() {
+                console.log("In!");
+                var image = $(this).data('image');
+                console.log(image);
+            }
+
+            function onOut() {
+                console.log("Out!");
+            }
+        });
+    </script>
 {% endif %}

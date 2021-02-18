@@ -745,14 +745,3 @@ h2.price {
     background-color: #df5c39;
 }
 
-#slidemenu{
-	display: block;
-	max-width: 100%;
-	max-height: 380px;
-	height: auto;
-}
-
-#slidemenu img{
-	max-height: 380px;
-	margin: 0 auto;
-}

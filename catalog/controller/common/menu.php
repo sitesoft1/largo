@@ -44,15 +44,46 @@ class ControllerCommonMenu extends Controller {
         //slidemenu
             $this->load->model('catalog/slidemenu');
             $slidemenues = $this->model_catalog_slidemenu->getSlidemenues();
-            $this->model_catalog_slidemenu->ocLog('slidemenues', $slidemenues, true);
+            $this->model_catalog_slidemenu->ocLog('slidemenues', $slidemenues, false);
             
             if($slidemenues){
+                $data['slidemenu'] = array();
+                foreach ($slidemenues as $item_arr){
+                    
+                    $type = $item_arr['type'];
+                    $sources = unserialize($item_arr['source']);
+                    $source = $sources[$type];
+                    $image = $item_arr['image'];
+                    $slidemenu_name = $item_arr['slidemenu_name'];
+        
+                    $this->model_catalog_slidemenu->ocLog('sources', $sources, true);
+                    $this->model_catalog_slidemenu->ocLog('source', $source, true);
+        
+                    if($type == 'category_url'){
+                        $href = $this->url->link('product/category', 'path=' . $source['category_id']);
+            
+                        //children...
+            
+                    }elseif ($type == 'information_url'){
+                        $href = $this->url->link('information/information', 'information_id=' .  $source['information_id']);
+                    }else{
+                        $href = $source['path'];
+                    }
+        
+                    // Level 1
+                    $data['slidemenu'][] = array(
+                        'name'     => $slidemenu_name,
+                        'image'     => $image,
+                        'children' => array(),//...
+                        'column'   => 1,
+                        'href'     => $href
+                    );
+                }
+                
                 return $this->load->view('common/slidemenu', $data);
             }else{
                 return $this->load->view('common/menu', $data);
             }
-            
-            
         //slidemenu END
 
 		//return $this->load->view('common/menu', $data);

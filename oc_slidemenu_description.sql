@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Фев 17 2021 г., 09:21
+-- Время создания: Фев 18 2021 г., 06:54
 -- Версия сервера: 5.6.47
 -- Версия PHP: 7.3.26
 
@@ -39,9 +39,18 @@ CREATE TABLE `oc_slidemenu_description` (
 --
 
 INSERT INTO `oc_slidemenu_description` (`id`, `slidemenu_id`, `language_id`, `slidemenu_name`) VALUES
-(78, 3, 1, 'Test item 5'),
-(77, 3, 3, 'Тестовый пункт 5'),
-(76, 3, 2, 'Тестовий пункт меню 5');
+(143, 3, 3, 'Категория Mac'),
+(142, 3, 2, 'Категорія Mac'),
+(146, 4, 3, 'Инфо О нас'),
+(147, 4, 1, 'info About us'),
+(144, 3, 1, 'Category Mac'),
+(145, 4, 2, 'Інфо Про нас'),
+(149, 5, 3, 'Произвольная ссылка'),
+(148, 5, 2, 'Довільне посилання'),
+(150, 5, 1, 'Custom url'),
+(151, 6, 2, 'Гугл'),
+(152, 6, 3, 'Гугл'),
+(153, 6, 1, 'Google');
 
 --
 -- Индексы сохранённых таблиц
@@ -61,7 +70,7 @@ ALTER TABLE `oc_slidemenu_description`
 -- AUTO_INCREMENT для таблицы `oc_slidemenu_description`
 --
 ALTER TABLE `oc_slidemenu_description`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,6 +1,6 @@
 <?php
 class ModelCatalogSlidemenu extends Model {
-    public function index() {
+    public function install() {
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "slidemenu LIMIT 1");
         if($query->num_rows == 0){
             $this->db->query("CREATE TABLE IF NOT EXISTS `".DB_PREFIX."slidemenu` (

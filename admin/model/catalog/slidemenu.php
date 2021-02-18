@@ -1,5 +1,29 @@
 <?php
 class ModelCatalogSlidemenu extends Model {
+    public function index() {
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "slidemenu LIMIT 1");
+        if($query->num_rows == 0){
+            $this->db->query("CREATE TABLE IF NOT EXISTS `".DB_PREFIX."slidemenu` (
+              `slidemenu_id` bigint(20) UNSIGNED NOT NULL,
+              `type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+              `source` text COLLATE utf8mb4_unicode_ci NOT NULL,
+              `sort_order` int(3) NOT NULL DEFAULT '0',
+              `status` tinyint(1) NOT NULL DEFAULT '1',
+              `image` varchar(2048) COLLATE utf8mb4_unicode_ci NOT NULL
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
+        }
+    
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "slidemenu_description LIMIT 1");
+        if($query->num_rows == 0){
+            $this->db->query("CREATE TABLE `" . DB_PREFIX . "slidemenu_description` (
+              `id` bigint(20) UNSIGNED NOT NULL,
+              `slidemenu_id` bigint(20) NOT NULL,
+              `language_id` int(11) NOT NULL,
+              `slidemenu_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+            ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;");
+        }
+    }
+    
 	public function addSlidemenu($data) {
 		$this->db->query("INSERT INTO " . DB_PREFIX . "slidemenu SET `type` = '" . $this->db->escape($data['type']) . "', source='', sort_order='". (int)$data['sort_order'] ."', status='". (int)$data['status'] ."'");
 

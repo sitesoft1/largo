@@ -1,8 +1,16 @@
 <?php
 class ControllerCatalogSlidemenu extends Controller {
 	private $error = array();
+    
+    public function install() {
+        $this->load->model('catalog/slidemenu');
+        $this->model_catalog_slidemenu->install();
+        
+    }
 
 	public function index() {
+        $this->install();
+  
 		$this->load->language('catalog/slidemenu');
 
 		$this->document->setTitle($this->language->get('heading_title'));

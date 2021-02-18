@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 -- Структура таблицы `oc_slidemenu`
 --
 
-CREATE TABLE `oc_slidemenu` (
+CREATE TABLE IF NOT EXISTS `oc_slidemenu` (
   `slidemenu_id` bigint(20) UNSIGNED NOT NULL,
   `type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `source` text COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -58,7 +58,7 @@ INSERT INTO `oc_slidemenu` (`slidemenu_id`, `type`, `source`, `sort_order`, `sta
 -- Структура таблицы `oc_slidemenu_description`
 --
 
-CREATE TABLE `oc_slidemenu_description` (
+CREATE TABLE IF NOT EXISTS `oc_slidemenu_description` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `slidemenu_id` bigint(20) NOT NULL,
   `language_id` int(11) NOT NULL,

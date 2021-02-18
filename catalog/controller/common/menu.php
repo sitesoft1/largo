@@ -40,7 +40,21 @@ class ControllerCommonMenu extends Controller {
 				);
 			}
 		}
+        
+        //slidemenu
+            $this->load->model('catalog/slidemenu');
+            $slidemenues = $this->model_catalog_slidemenu->getSlidemenues();
+            $this->model_catalog_slidemenu->ocLog('slidemenues', $slidemenues, true);
+            
+            if($slidemenues){
+                return $this->load->view('common/slidemenu', $data);
+            }else{
+                return $this->load->view('common/menu', $data);
+            }
+            
+            
+        //slidemenu END
 
-		return $this->load->view('common/menu', $data);
+		//return $this->load->view('common/menu', $data);
 	}
 }

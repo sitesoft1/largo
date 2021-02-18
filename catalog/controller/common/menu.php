@@ -44,7 +44,7 @@ class ControllerCommonMenu extends Controller {
         //slidemenu
             $this->load->model('catalog/slidemenu');
             $slidemenues = $this->model_catalog_slidemenu->getSlidemenues();
-            $this->model_catalog_slidemenu->ocLog('slidemenues', $slidemenues, false);
+            //$this->model_catalog_slidemenu->ocLog('slidemenues', $slidemenues, false);
             
             if($slidemenues){
                 $data['slidemenu'] = array();
@@ -58,8 +58,8 @@ class ControllerCommonMenu extends Controller {
                     $image = $item_arr['image'];
                     $slidemenu_name = $item_arr['slidemenu_name'];
         
-                    $this->model_catalog_slidemenu->ocLog('sources', $sources, true);
-                    $this->model_catalog_slidemenu->ocLog('source', $source, true);
+                    //$this->model_catalog_slidemenu->ocLog('sources', $sources, true);
+                    //$this->model_catalog_slidemenu->ocLog('source', $source, true);
         
                     if($type == 'category_url'){
                         $href = $this->url->link('product/category', 'path=' . $source['category_id']);

@@ -84,8 +84,8 @@ class ControllerCatalogSlidemenu extends Controller {
 		$this->load->model('catalog/slidemenu');
 
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
-			foreach ($this->request->post['selected'] as $category_id) {
-				$this->model_catalog_slidemenu->deleteCategory($category_id);
+			foreach ($this->request->post['selected'] as $slidemenu_id) {
+				$this->model_catalog_slidemenu->deleteSlidemenu($slidemenu_id);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');

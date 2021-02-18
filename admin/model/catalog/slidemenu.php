@@ -38,7 +38,6 @@ class ModelCatalogSlidemenu extends Model {
 	}
     
     public function getSlidemenu($slidemenu_id) {
-        //$query = $this->db->query("SELECT DISTINCT *, (SELECT GROUP_CONCAT(cd1.name ORDER BY level SEPARATOR '&nbsp;&nbsp;&gt;&nbsp;&nbsp;') FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "category_description cd1 ON (cp.path_id = cd1.category_id AND cp.category_id != cp.path_id) WHERE cp.category_id = c.category_id AND cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' GROUP BY cp.category_id) AS path FROM " . DB_PREFIX . "category c LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (c.category_id = cd2.category_id) WHERE c.category_id = '" . (int)$category_id . "' AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'");
         $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "slidemenu LEFT JOIN " . DB_PREFIX . "slidemenu_description ON " . DB_PREFIX . "slidemenu.slidemenu_id = " . DB_PREFIX . "slidemenu_description.slidemenu_id WHERE " . DB_PREFIX . "slidemenu.slidemenu_id = '". (int)$slidemenu_id ."'");
         
         return $query->row;
@@ -65,9 +64,7 @@ class ModelCatalogSlidemenu extends Model {
     }
     
     public function getSlidemenues($data = array()) {
-        //$sql = "SELECT cp.category_id AS category_id, GROUP_CONCAT(cd1.name ORDER BY cp.level SEPARATOR '&nbsp;&nbsp;&gt;&nbsp;&nbsp;') AS name, c1.parent_id, c1.sort_order FROM " . DB_PREFIX . "category_path cp LEFT JOIN " . DB_PREFIX . "category c1 ON (cp.category_id = c1.category_id) LEFT JOIN " . DB_PREFIX . "category c2 ON (cp.path_id = c2.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd1 ON (cp.path_id = cd1.category_id) LEFT JOIN " . DB_PREFIX . "category_description cd2 ON (cp.category_id = cd2.category_id) WHERE cd1.language_id = '" . (int)$this->config->get('config_language_id') . "' AND cd2.language_id = '" . (int)$this->config->get('config_language_id') . "'";
-        //$sql = "SELECT * FROM " . DB_PREFIX . "slidemenu LEFT JOIN " . DB_PREFIX . "slidemenu_description ON " . DB_PREFIX . "slidemenu.slidemenu_id = " . DB_PREFIX . "slidemenu_description.slidemenu_id";
-        $sql = "SELECT sdm.slidemenu_id, sdm.type, sdm.source, sdm.sort_order, sdm.status, sdm.image, sdm_d.slidemenu_name FROM " . DB_PREFIX . "slidemenu sdm LEFT JOIN " . DB_PREFIX . "slidemenu_description sdm_d ON sdm.slidemenu_id = sdm_d.slidemenu_id WHERE sdm_d.language_id = '" . (int)$this->config->get('config_language_id') . "'";
+        $sql = "SELECT sdm.slidemenu_id, sdm.type, sdm.source, sdm.sort_order, sdm.status, sdm.image, sdm_d.slidemenu_name FROM " . DB_PREFIX . "slidemenu sdm LEFT JOIN " . DB_PREFIX . "slidemenu_description sdm_d ON sdm.slidemenu_id = sdm_d.slidemenu_id WHERE sdm_d.language_id = '" . (int)$this->config->get('config_language_id') . "' ORDER BY sdm.sort_order";
         
         if (isset($data['start']) || isset($data['limit'])) {
             if ($data['start'] < 0) {
@@ -86,31 +83,18 @@ class ModelCatalogSlidemenu extends Model {
         return $query->rows;
     }
     
-    
-    
-    
-    
-
-	public function deleteCategory($category_id) {
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_path WHERE category_id = '" . (int)$category_id . "'");
-
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category_path WHERE path_id = '" . (int)$category_id . "'");
-
-		foreach ($query->rows as $result) {
-			$this->deleteCategory($result['category_id']);
-		}
-
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_description WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_filter WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_to_store WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "category_to_layout WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "product_to_category WHERE category_id = '" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "seo_url WHERE query = 'category_id=" . (int)$category_id . "'");
-		$this->db->query("DELETE FROM " . DB_PREFIX . "coupon_category WHERE category_id = '" . (int)$category_id . "'");
-
-		$this->cache->delete('category');
+	public function deleteSlidemenu($slidemenu_id) {
+	
+		$this->db->query("DELETE FROM " . DB_PREFIX . "slidemenu_description WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
+		$this->db->query("DELETE FROM " . DB_PREFIX . "slidemenu WHERE slidemenu_id = '" . (int)$slidemenu_id . "'");
+		
 	}
+	
+	
+	
+	
+	
+	
 
 	public function repairCategories($parent_id = 0) {
 		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "category WHERE parent_id = '" . (int)$parent_id . "'");
